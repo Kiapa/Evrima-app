@@ -47,7 +47,7 @@ export default {
       [
         "expo-notifications",
         {
-          "icon": "./assets/notification-icon.png",
+          "icon": "./assets/images/notification-icon.png",
           "color": "#00E5A0"
         }
       ]
