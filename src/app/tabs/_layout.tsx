@@ -2,6 +2,12 @@ import { Tabs } from 'expo-router'
 import React, { useEffect } from 'react'
 import { Text } from 'react-native'
 import { Colors, Typography } from '@/constants'
+import {
+  handleInitialNotification,
+  registerForPushNotifications,
+  setupNotificationTapHandler,
+} from '@/lib/notifications'
+import { useGeofencesStore } from '@/store/geofences'
 import { useVehiclesStore } from '@/store/vehicles'
 
 function TabIcon({ glyph, focused }: { glyph: string; focused: boolean }) {
@@ -12,11 +18,23 @@ function TabIcon({ glyph, focused }: { glyph: string; focused: boolean }) {
 
 export default function AppLayout() {
   const { fetchVehicles, startLiveTracking, stopLiveTracking } = useVehiclesStore()
+  const { fetchGeofences } = useGeofencesStore()
 
   useEffect(() => {
+    // Data + WebSocket
     fetchVehicles()
+    fetchGeofences()
     startLiveTracking()
-    return () => stopLiveTracking()
+
+    // Push notifications — register token, handle cold-start tap, listen for taps
+    registerForPushNotifications()
+    handleInitialNotification()
+    const cleanupTapHandler = setupNotificationTapHandler()
+
+    return () => {
+      stopLiveTracking()
+      cleanupTapHandler()
+    }
   }, [])
 
   return (
@@ -51,6 +69,13 @@ export default function AppLayout() {
         options={{
           title: 'Vehicles',
           tabBarIcon: ({ focused }) => <TabIcon glyph="🚗" focused={focused} />,
+        }}
+      />
+      <Tabs.Screen
+        name="geofences"
+        options={{
+          title: 'Zones',
+          tabBarIcon: ({ focused }) => <TabIcon glyph="📍" focused={focused} />,
         }}
       />
       <Tabs.Screen

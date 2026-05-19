@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Colors, Radius, Spacing, Typography } from '@/constants'
+import { deregisterPushToken } from '@/lib/notifications'
 import { useAuthStore } from '@/store/auth'
 import { useVehiclesStore } from '@/store/vehicles'
 
@@ -51,6 +52,7 @@ export default function SettingsScreen() {
         style: 'destructive',
         onPress: async () => {
           stopLiveTracking()
+          await deregisterPushToken()
           await signOut()
           router.replace('/(auth)/login')
         },

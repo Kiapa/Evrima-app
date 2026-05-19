@@ -3,6 +3,8 @@ import { StyleSheet, View } from 'react-native'
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import { Colors } from '@/constants'
 import type { VehicleWithPosition } from '@/types'
+import type { Geofence } from '@/store/geofences'
+import { GeofenceLayer } from './GeofenceLayer'
 import { VehicleMarker } from './VehicleMarker'
 
 // Dark map style — matches the app's dark theme
@@ -31,9 +33,12 @@ interface LiveMapProps {
   vehicles: VehicleWithPosition[]
   selectedVehicleId: string | null
   onMarkerPress: (vehicleId: string) => void
+  geofences?: Geofence[]
+  // Trip replay — when set, shows a static marker instead of live vehicles
+  replayPosition?: { latitude: number; longitude: number } | null
 }
 
-export function LiveMap({ vehicles, selectedVehicleId, onMarkerPress }: LiveMapProps) {
+export function LiveMap({ vehicles, selectedVehicleId, onMarkerPress, geofences = [], replayPosition }: LiveMapProps) {
   const mapRef = useRef<MapView>(null)
 
   // When a vehicle is selected and has a position, animate the camera to it
@@ -64,8 +69,10 @@ export function LiveMap({ vehicles, selectedVehicleId, onMarkerPress }: LiveMapP
         showsTraffic={false}
         toolbarEnabled={false}
       >
+        <GeofenceLayer geofences={geofences} />
+
         {vehicles
-          .filter(v => v.latest_position)
+          .filter(v => v.latest_position && !replayPosition)
           .map(vehicle => (
             <Marker
               key={vehicle.id}

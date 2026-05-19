@@ -12,8 +12,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { Colors, Spacing, Typography } from '@/constants'
-import { useAuthStore } from '@/store/auth'
+import { Colors, Spacing, Typography } from '../../constants'
+import { useAuthStore } from '../../store/auth'
 
 export default function SignupScreen() {
   const { signUp, loading } = useAuthStore()

@@ -1,4 +1,5 @@
 import { router } from 'expo-router'
+import { router } from 'expo-router'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Colors, Radius, Spacing, Typography } from '@/constants'
@@ -79,11 +80,14 @@ export function VehicleCard({ vehicle, onPress }: VehicleCardProps) {
         </View>
       )}
 
-      {/* No tracker prompt */}
-      {!hasTracker && (
-        <Text style={styles.noTrackerHint}>
-          Tap to link a tracking device to this vehicle
-        </Text>
+  {/* History button — only for tracked vehicles */}
+      {hasTracker && (
+        <TouchableOpacity
+          style={styles.historyBtn}
+          onPress={() => router.push(`/(app)/vehicles/${vehicle.id}/history`)}
+        >
+          <Text style={styles.historyBtnText}>🕐 View trip history</Text>
+        </TouchableOpacity>
       )}
     </TouchableOpacity>
   )
@@ -171,5 +175,15 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.xs,
     borderTopWidth: 1,
     borderTopColor: Colors.border,
+  },
+  historyBtn: {
+    paddingTop: Spacing.xs,
+    borderTopWidth: 1,
+    borderTopColor: Colors.border,
+  },
+  historyBtnText: {
+    fontSize: Typography.sizes.xs,
+    color: Colors.accent,
+    fontWeight: Typography.weights.medium,
   },
 })
