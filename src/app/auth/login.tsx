@@ -10,8 +10,8 @@ import {
   View,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { Colors, Spacing, Typography } from '@/constants'
 import { useAuthStore } from '@/store/auth'
 
@@ -96,7 +96,7 @@ export default function LoginScreen() {
           {/* Footer */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>Don't have an account? </Text>
-            <Link href="/(auth)/signup" asChild>
+            <Link href="/auth/signup" asChild>
               <Text style={styles.footerLink}>Create one</Text>
             </Link>
           </View>

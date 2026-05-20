@@ -11,9 +11,9 @@ import {
   View,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
-import { Select } from '@/components/ui/Select'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Select } from '@/components/ui/select'
 import { Colors, Spacing, Typography, VEHICLE_TYPES, type VehicleType } from '@/constants'
 import { useVehiclesStore } from '@/store/vehicles'
 

@@ -2,9 +2,9 @@ import { router } from 'expo-router'
 import React, { useState } from 'react'
 import {ActivityIndicator,ScrollView,StyleSheet,Text,TouchableOpacity,View,} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { LiveMap } from '@/components/map/LiveMap'
-import { VehicleCard } from '@/components/vehicles/VehicleCard'
-import { Button } from '@/components/ui/Button'
+import { LiveMap } from '@/components/map/live-map'
+import { VehicleCard } from '@/components/vehicles/vehicle-card'
+import { Button } from '@/components/ui/button'
 import { Colors, Radius, Spacing, Typography } from '@/constants'
 import { useVehiclesStore } from '@/store/vehicles'
 
@@ -125,7 +125,7 @@ export default function MapScreen() {
                 </Text>
                 <Button
                   title="Add vehicle"
-                  onPress={() => router.push('/(app)/vehicles/add')}
+                  onPress={() => router.push('/tabs/vehicles/add')}
                   style={styles.emptyButton}
                 />
               </View>

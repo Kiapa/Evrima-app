@@ -4,8 +4,8 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import { Colors } from '@/constants'
 import type { VehicleWithPosition } from '@/types'
 import type { Geofence } from '@/store/geofences'
-import { GeofenceLayer } from './GeofenceLayer'
-import { VehicleMarker } from './VehicleMarker'
+import { GeofenceLayer } from './geofence-layer'
+import { VehicleMarker } from './vehicle-marker'
 
 // Dark map style — matches the app's dark theme
 const DARK_MAP_STYLE = [

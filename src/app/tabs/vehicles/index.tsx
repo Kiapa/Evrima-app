@@ -10,8 +10,8 @@ import {
   View,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { VehicleCard } from '@/components/vehicles/VehicleCard'
-import { Button } from '@/components/ui/Button'
+import { VehicleCard } from '@/components/vehicles/vehicle-card'
+import { Button } from '@/components/ui/button'
 import { Colors, Spacing, Typography } from '@/constants'
 import { useVehiclesStore } from '@/store/vehicles'
 

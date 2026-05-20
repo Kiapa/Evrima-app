@@ -5,7 +5,7 @@ import {
   StyleSheet, Switch, Text, TouchableOpacity, View,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import { Colors, Radius, Spacing, Typography } from '@/constants'
 import { useGeofencesStore, type Geofence } from '@/store/geofences'
 

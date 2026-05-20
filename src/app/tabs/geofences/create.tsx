@@ -9,8 +9,8 @@ import MapView, {
   Polygon, PROVIDER_GOOGLE,
 } from 'react-native-maps'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { Colors, Radius, Spacing, Typography } from '@/constants'
 import type { LatLng } from '@/store/geofences'
 import { useGeofencesStore } from '@/store/geofences'

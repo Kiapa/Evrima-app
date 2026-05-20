@@ -10,8 +10,8 @@ import {
   View,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { Colors, Spacing, Typography } from '../../constants'
 import { useAuthStore } from '../../store/auth'
 
@@ -43,7 +43,7 @@ export default function SignupScreen() {
       Alert.alert(
         'Check your email',
         'We sent a confirmation link to your email. Please verify your account before signing in.',
-        [{ text: 'OK', onPress: () => router.replace('/(auth)/login') }],
+        [{ text: 'OK', onPress: () => router.replace('/auth/login') }],
       )
     } catch (e: any) {
       Alert.alert('Sign up failed', e.message)
@@ -121,7 +121,7 @@ export default function SignupScreen() {
 
           <View style={styles.footer}>
             <Text style={styles.footerText}>Already have an account? </Text>
-            <Link href="/(auth)/login" asChild>
+            <Link href="/auth/login" asChild>
               <Text style={styles.footerLink}>Sign in</Text>
             </Link>
           </View>

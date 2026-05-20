@@ -1,5 +1,4 @@
 import { router } from 'expo-router'
-import { router } from 'expo-router'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Colors, Radius, Spacing, Typography } from '@/constants'
@@ -30,7 +29,7 @@ export function VehicleCard({ vehicle, onPress }: VehicleCardProps) {
       onPress()
     } else if (!hasTracker) {
       // No tracker linked yet — go to link tracker screen
-      router.push(`/(app)/vehicles/${vehicle.id}/link-tracker`)
+      router.push(`./tabs/vehicles/${vehicle.id}/link-tracker`)
     }
   }
 
@@ -84,7 +83,7 @@ export function VehicleCard({ vehicle, onPress }: VehicleCardProps) {
       {hasTracker && (
         <TouchableOpacity
           style={styles.historyBtn}
-          onPress={() => router.push(`/(app)/vehicles/${vehicle.id}/history`)}
+          onPress={() => router.push(`./tabs/vehicles/${vehicle.id}/history`)}
         >
           <Text style={styles.historyBtnText}>🕐 View trip history</Text>
         </TouchableOpacity>
