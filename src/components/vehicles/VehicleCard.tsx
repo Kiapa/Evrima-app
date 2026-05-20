@@ -80,7 +80,7 @@ export function VehicleCard({ vehicle, onPress }: VehicleCardProps) {
         </View>
       )}
 
-  {/* History button — only for tracked vehicles */}
+      {/* History — tracked vehicles */}
       {hasTracker && (
         <TouchableOpacity
           style={styles.historyBtn}
@@ -88,6 +88,13 @@ export function VehicleCard({ vehicle, onPress }: VehicleCardProps) {
         >
           <Text style={styles.historyBtnText}>🕐 View trip history</Text>
         </TouchableOpacity>
+      )}
+
+      {/* No tracker prompt */}
+      {!hasTracker && (
+        <Text style={styles.noTrackerHint}>
+          Tap to link a tracking device to this vehicle
+        </Text>
       )}
     </TouchableOpacity>
   )
